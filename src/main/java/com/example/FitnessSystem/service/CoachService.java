@@ -7,4 +7,5 @@ import java.util.List;
 public interface CoachService {
 
     List<Coach> getAllCoaches();
+    Coach findByUsername(String username);
 }

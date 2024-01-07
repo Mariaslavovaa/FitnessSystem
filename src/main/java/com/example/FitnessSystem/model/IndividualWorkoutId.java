@@ -1,5 +1,6 @@
 package com.example.FitnessSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -9,11 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +27,7 @@ public class IndividualWorkoutId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "coach_email", referencedColumnName = "email")
+    @JsonBackReference
     private Coach coach;
 
 }

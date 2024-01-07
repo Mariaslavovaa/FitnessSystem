@@ -16,9 +16,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/private/api/group-workouts")
 @RequiredArgsConstructor
+@CrossOrigin
 public class GroupWorkoutController {
 
-    private static GroupWorkoutService groupWorkoutService;
+    private final GroupWorkoutService groupWorkoutService;
 
     @GetMapping
     public ResponseEntity<List<GroupWorkoutDto>> getAllGroupWorkout(){
@@ -26,10 +27,9 @@ public class GroupWorkoutController {
         return new ResponseEntity<>(groupWorkouts.stream().map(GroupWorkoutConversion::entityToDto).toList(), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<GroupWorkoutDto> createGroupWorkout(@RequestBody GroupWorkoutDto groupWorkoutDto){
-        return new ResponseEntity<>(GroupWorkoutConversion.entityToDto(groupWorkoutService
-                .createGroupWorkout(GroupWorkoutConversion.dtoToEntity(groupWorkoutDto))), HttpStatus.CREATED);
+        return new ResponseEntity<>(groupWorkoutService.createGroupWorkout(groupWorkoutDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

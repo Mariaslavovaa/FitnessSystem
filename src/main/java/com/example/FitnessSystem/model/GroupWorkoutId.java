@@ -1,7 +1,7 @@
 package com.example.FitnessSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -26,5 +25,9 @@ public class GroupWorkoutId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
+    @JsonManagedReference
+    //TODO try making all the circular dependency uni-directional and use queries if you need information or
+    // do a research and tell me why it works with this annotation, and would it be the same if I used the simplest
+    // @JsonIgnore annotation :)
     private Coach coach;
 }

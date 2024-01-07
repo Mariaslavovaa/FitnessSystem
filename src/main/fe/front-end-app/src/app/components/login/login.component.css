@@ -1,0 +1,31 @@
+
+  :host {
+    display: flex;
+    justify-content: center;
+    background: inherit;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-title {
+    color: rgb(144, 70, 174);
+    display: flex;
+    justify-content: center;
+  }
+
+  .login {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .login-page {
+    width: 100%;
+  }
+
+  div {
+    margin-bottom: 5%;
+  }

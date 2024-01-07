@@ -1,7 +1,6 @@
 package com.example.FitnessSystem.dtos;
 
-import com.example.FitnessSystem.model.FitnessUser;
-import com.example.FitnessSystem.model.IndividualWorkoutId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class IndividualWorkoutDto {
 
+    @JsonFormat(pattern = "M/dd/yyyy HH:mm:ss")
     private LocalDateTime localDateTime;
-    private CoachDto coach;
-    private FitnessUserDto fitnessUser;
+    private String coach;
+    private String fitnessUser;
 }

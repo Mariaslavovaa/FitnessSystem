@@ -1,0 +1,50 @@
+<div class="form">
+    <p class="text">*Груповите тренировки са всеки ден само от 17:00 часа!</p>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" #date>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <igx-time-picker #timePicker [mode]="mode" [value]="'16:00:00'" [spinLoop]='false' [inputFormat]="format"
+            class="time">
+            <label igxLabel>Time</label>
+        </igx-time-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select a workout</mat-label>
+        <mat-select placeholder="Workout*" #workoutValue> <!-- Трябва някакси да взема коя тренировка е избрана-->
+            <mat-option [value]="indWorkout">Individual workout</mat-option>
+            <mat-option [value]="groupWorkout">Group workout</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field *ngIf="workoutValue.value === 'Group workout'">
+            <mat-label>Select a type of workout</mat-label>
+            <mat-select placeholder="Workout type*" #workoutType>
+                <mat-option [value]="groupWorkoutName" #type>Crossfit</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Select a coach</mat-label>
+        <mat-select #coach>
+            @for (coach of coaches; track coach) {
+            <mat-option [value]="coach.username">{{coach.username}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <button (click)="saveWorkout(date.value, timePicker.value, coach.value, workoutValue.value, groupWorkoutName)">
+        <!-- Трябва някакси да поставя данните в правилните формати????  -->
+        <!-- <button class="book" (click)="saveWorkout(date, timePicker, coach.value, workoutValue.value)"> -->
+        <span>Book</span>
+        <mat-icon>arrow_forward</mat-icon>
+
+    </button>
+</div>

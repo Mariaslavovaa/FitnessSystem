@@ -1,0 +1,29 @@
+/* body {
+  background-image: url(‘https://scx1.b-cdn.net/csz/news/800/2017/theoreticala.jpg’);
+  color: #FFFFFF;
+} */
+
+/* :host {
+    display: block;
+    background-image: url('/assets/image/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100vh; /* 100% of the viewport height */
+    /* margin: 0;     Remove default margin on the body */
+    /* Additional styling properties can be added here */
+  /* }  */
+
+
+  /* YourComponentName.component.css */
+  /* !important */
+
+
+  body { 
+    background: url("../assets/image/background.jpg") repeat 0 0;
+    background-position: center;
+    background-size: cover;
+    position: center;
+    display: flex;
+}

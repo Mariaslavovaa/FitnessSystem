@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface FitnessUserRepository extends CrudRepository<FitnessUser, String> {
     Optional<FitnessUser> findByUsernameAndPassword(String username, String password);
+    Optional<FitnessUser> findByUsername(String username);
+    Optional<FitnessUser> findByEmail(String email);
 }

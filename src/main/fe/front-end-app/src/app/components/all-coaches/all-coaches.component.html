@@ -1,0 +1,10 @@
+<div class="card">
+    <h1 class="page">All coaches</h1>
+    <mat-card class="coach" *ngFor="let coach of coaches;">
+        <mat-card-title class="title">{{coach.username}}</mat-card-title>
+        <mat-card-content class="content">Professional experience: {{coach.professionalExperience}}</mat-card-content>
+        <mat-card-content class="content">Education: {{coach.education}}</mat-card-content>
+        <mat-card-content class="content">Email: {{coach.email}}</mat-card-content>
+        <mat-card-content class="content">Phone number: {{coach.phoneNumber}}</mat-card-content>
+    </mat-card>
+</div>

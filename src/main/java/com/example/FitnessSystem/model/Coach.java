@@ -1,6 +1,7 @@
 package com.example.FitnessSystem.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,9 +33,11 @@ public class Coach {
     private String professionalExperience;
 
     @OneToMany(mappedBy = "individualWorkoutId.coach")
+    @JsonIgnore
     private List<IndividualWorkout> individualWorkouts;
 
     @OneToMany(mappedBy = "groupWorkoutId.coach")
+    @JsonIgnore
     private List<GroupWorkout> groupWorkouts;
 
 }

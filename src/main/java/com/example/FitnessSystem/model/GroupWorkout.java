@@ -18,7 +18,7 @@ public class GroupWorkout {
     @EmbeddedId
     private GroupWorkoutId groupWorkoutId;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = true)
     private String name;
 
     @Column(name = "hallNumber")

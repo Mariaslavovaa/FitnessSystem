@@ -1,0 +1,8 @@
+.card-form {
+    display: grid;
+}
+
+.button {
+    display: block;
+    margin: auto;
+}

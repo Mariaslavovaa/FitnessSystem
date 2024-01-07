@@ -1,0 +1,49 @@
+h2 {
+    padding: 2rem;
+}
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+mat-sidenav-container {
+    height: 160%;
+}
+
+mat-sidenav {
+    padding-top: 5rem;
+
+    .entry {
+        display: contents;
+    }
+}
+
+mat-sidenav-content {
+    margin: 10px;
+    padding-right: 5px;
+
+    @media screen and (min-width: 600px) {
+        padding-top: 2rem;
+    }
+}
+
+.entry {
+    width: 100px;
+    padding: 0 6px 0 6px;
+    margin: 6px 8px 6px 8px;
+    min-width: 88px;
+    border-radius: 3px;
+    font-size: 15px;
+    text-transform: capitalize;
+    border: none;
+}
+
+.text {
+    margin-right: auto;
+}
+
+:host{
+    background: inherit;
+}

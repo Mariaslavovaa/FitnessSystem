@@ -1,0 +1,47 @@
+<div>
+    <mat-toolbar color="primary">
+        <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    
+        <h1 class="text">Hello {{username}}</h1>
+        <div class="account-buttons">
+            <button mat-icon-button>
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container autosize>
+        <mat-sidenav>
+            <mat-nav-list class="list">
+                <a mat-list-item (click)="redirectToRoute('login')">
+                    <button class="entry">
+                        <span>Login</span>
+                    </button>
+                </a>
+                <a mat-list-item (click)="redirectToRoute('register')">
+                    <button class="entry">
+                        <span>Signup</span>
+                    </button>
+                </a>
+                <a mat-list-item (click)="redirectToRoute('all-coaches')">
+                    <button class="entry">
+                        <span>Coaches</span>
+                    </button>
+                </a>
+                <a mat-list-item (click)="redirectToRoute('workout-form')">
+                    <button class="entry">
+                        <span>Book workout</span>
+                    </button>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <h2>Welcome to MS Fitness!</h2>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
