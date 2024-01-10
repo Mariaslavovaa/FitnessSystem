@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,7 +38,7 @@ export class NavBarComponent {
   isCollapsed = true;
 
   constructor(private observer: BreakpointObserver) { }
-  username :string  | null = ""
+  username: string | null = ""
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       if (screenSize.matches) {
@@ -55,8 +55,13 @@ export class NavBarComponent {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  redirectToRoute(route: string){
+  redirectToRoute(route: string) {
     window.location.replace(route)
+  }
+
+  exit() {
+    sessionStorage.clear();
+    this.redirectToRoute('login');
   }
 
 }

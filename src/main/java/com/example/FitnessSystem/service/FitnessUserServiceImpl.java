@@ -75,7 +75,7 @@ public class FitnessUserServiceImpl implements FitnessUserService{
                 individualWorkout.getIndividualWorkoutId().getLocalDateTime(),
                 individualWorkout.getIndividualWorkoutId().getCoach().getEmail(),
                 individualWorkout.getFitnessUser().getEmail())).toList());
-//        fitnessUserRepo.save(found);
+
         return result;
     }
 

@@ -4,6 +4,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AllCoachesComponent } from './components/all-coaches/all-coaches.component';
 import { WorkoutFormComponent } from './components/workout-form/workout-form.component';
 import { PaymentApiComponent } from './components/payment-api/payment-api.component';
+import { MyWorkoutsComponent } from './components/my-workouts/my-workouts.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'payment-api',
         component: PaymentApiComponent
+    },
+    {
+        path: 'my-workouts',
+        component: MyWorkoutsComponent
     }
 ];

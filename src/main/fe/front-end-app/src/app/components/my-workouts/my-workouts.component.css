@@ -1,0 +1,15 @@
+
+.card{
+    display: grid;
+    row-gap: 30px;
+    justify-content: center;
+}
+
+.workout{
+    align-items: center;
+    background-color: rgb(228, 200, 229);
+}
+
+.content {
+    padding: 1%;
+}

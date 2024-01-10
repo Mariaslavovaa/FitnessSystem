@@ -26,8 +26,5 @@ public class GroupWorkoutId implements Serializable {
     @ManyToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
     @JsonManagedReference
-    //TODO try making all the circular dependency uni-directional and use queries if you need information or
-    // do a research and tell me why it works with this annotation, and would it be the same if I used the simplest
-    // @JsonIgnore annotation :)
     private Coach coach;
 }

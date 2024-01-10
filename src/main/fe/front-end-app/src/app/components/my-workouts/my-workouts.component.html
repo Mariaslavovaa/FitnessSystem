@@ -1,0 +1,25 @@
+<div class="card">
+    <div style="display: grid;
+    row-gap: 30px;">
+        @if (individualWorkouts.length != 0) {
+        <p class="page">My individual workouts</p>
+        <mat-card class="workout" *ngFor="let individualWorkout of individualWorkouts;">
+            <mat-card-content class="content">Name: {{individualWorkout.fitnessUser}}</mat-card-content>
+            <mat-card-content class="content">Date: {{individualWorkout.localDateTime}}</mat-card-content>
+            <mat-card-content class="content">Coach: {{individualWorkout.coach}}</mat-card-content>
+        </mat-card>
+        }
+    </div>
+    <div style="display: grid; row-gap: 30px;">
+        @if (groupWorkouts.length != 0) {
+        <p class="page">My group workouts</p>
+        <mat-card class="workout" *ngFor="let groupWorkout of groupWorkouts;">
+            <mat-card-content class="content">Name: {{groupWorkout.name}}</mat-card-content>
+            <mat-card-content class="content">Description: {{groupWorkout.description}}</mat-card-content>
+            <mat-card-content class="content">Hall number: {{groupWorkout.hallNumber}}</mat-card-content>
+            <mat-card-content class="content">Coach: {{groupWorkout.coach}}</mat-card-content>
+        </mat-card>
+        }
+    </div>
+</div>
+

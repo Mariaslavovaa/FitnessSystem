@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CardApiResponse } from '../../models/CardApiResponse';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CardModel } from "../../models/CardModel";
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DialogData } from '../workout-form/workout-form.component';
 
 
 @Component({
@@ -17,8 +17,6 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     MatInputModule,
     MatFormFieldModule,
-    // MatIconModule,
-    // MatDividerModule, 
     MatButtonModule
   ],
   templateUrl: './payment-api.component.html',
@@ -29,7 +27,8 @@ export class PaymentApiComponent {
   cardApiRes : CardApiResponse | null = null
   card?: CardModel
   
-  constructor(private readonly http: HttpClient){
+  constructor(private readonly http: HttpClient, public dialogRef: MatDialogRef<PaymentApiComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,){
 
   }
 
@@ -46,8 +45,8 @@ export class PaymentApiComponent {
     ).subscribe(response => {
       if(response){
         console.log(response);
-        this.cardApiRes = response
-        
+        this.cardApiRes = response;
+        this.dialogRef.close()
       }
     })
   }

@@ -1,10 +1,9 @@
-import { FitnessUser } from "./FitnessUser";
-import { GroupWorkoutId } from "./GroupWorkoutId";
 
 export interface GroupWorkout {
-    groupWorkoutId: GroupWorkoutId,
+    date: Date,
+    coach: String
     name: string,
     hallNumber: number,
     description: string,
-    users: FitnessUser[]
+    users: String[]
 }

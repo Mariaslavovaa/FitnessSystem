@@ -36,16 +36,13 @@ export class LoginComponent {
   constructor(private readonly router: Router, private readonly loginService: LoginService) { }
 
   login(username: string, password: string) {
-    // console.log(username);
-    // console.log(password);
     this.loginService.login(username, password).subscribe(response => {
-      // console.log(response);
       if(response){
         alert("Welcome " + response.username)
         this.found = response;
         sessionStorage.setItem("username", this.found.username)
         sessionStorage.setItem("email", this.found.email)
-        window.location.reload()
+        window.location.replace('my-workouts')
       }
     })
   }

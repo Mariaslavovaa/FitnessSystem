@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FitnessUser } from '../models/FitnessUser';
 import { HttpClient, HttpParams } from '@angular/common/http';

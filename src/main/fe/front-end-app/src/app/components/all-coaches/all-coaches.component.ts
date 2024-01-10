@@ -24,8 +24,6 @@ export class AllCoachesComponent {
   constructor(private readonly allCoachesService: AllCoachesService){
     this.getAllCoaches()
   } 
-
-  
   
   getAllCoaches(){
     this.allCoachesService.getAllCoaches().subscribe( response =>{

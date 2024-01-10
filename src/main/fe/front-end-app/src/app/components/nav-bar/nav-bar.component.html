@@ -6,15 +6,13 @@
     
         <h1 class="text">Hello {{username}}</h1>
         <div class="account-buttons">
-            <button mat-icon-button>
-                <mat-icon>account_circle</mat-icon>
-            </button>
-            <button mat-icon-button>
+            
+            <button mat-icon-button (click)="exit()">
                 <mat-icon>exit_to_app</mat-icon>
             </button>
         </div>
     </mat-toolbar>
-    <mat-sidenav-container autosize>
+    <mat-sidenav-container autosize class="sidenav">
         <mat-sidenav>
             <mat-nav-list class="list">
                 <a mat-list-item (click)="redirectToRoute('login')">
@@ -35,6 +33,11 @@
                 <a mat-list-item (click)="redirectToRoute('workout-form')">
                     <button class="entry">
                         <span>Book workout</span>
+                    </button>
+                </a>
+                <a mat-list-item (click)="redirectToRoute('my-workouts')">
+                    <button class="entry">
+                        <span>My workouts</span>
                     </button>
                 </a>
             </mat-nav-list>

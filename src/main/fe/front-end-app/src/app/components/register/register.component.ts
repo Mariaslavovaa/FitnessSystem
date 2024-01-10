@@ -55,15 +55,13 @@ export class RegisterComponent {
   }
 
   register() {
-    // if (!this.passwordsMatch()) {
-    //   return;
-    // }
+
     const signupData = {
       email: this.email, username: this.username, password: this.password,
       confirm_password: this.confirm_password, individualWorkouts: this.individualWorkouts,
       groupWorkouts: this.groupWorkouts
     };
-    //alert(signupData.email)
+    
     this.registerService.signup(signupData).subscribe((response) => {
       if(response){
         console.log(response)
@@ -71,8 +69,6 @@ export class RegisterComponent {
         window.location.replace('/login')
       }
     }) 
-
-
   }
 
 }

@@ -1,22 +1,23 @@
-<form class="card-form">
-    <mat-form-field class="name">
-        <mat-label>Name on Card</mat-label>
-        <input matInput #name>
-    </mat-form-field>
-    <mat-form-field class="card">
-        <mat-label> Card number</mat-label>
-        <input matInput #cardNumber>
-    </mat-form-field>
-    <mat-form-field class="date">
-        <mat-label> Exp. date</mat-label>
-        <input matInput #date>
-    </mat-form-field>
-    <mat-form-field class="cvv">
-        <mat-label> CVV </mat-label>
-        <input matInput #cvv>
-    </mat-form-field>
-    
-</form>
+<div>
+    <form class="card-form">
+        <mat-form-field class="name">
+            <mat-label>Name on Card</mat-label>
+            <input matInput #name>
+        </mat-form-field>
+        <mat-form-field class="card">
+            <mat-label> Card number</mat-label>
+            <input matInput #cardNumber>
+        </mat-form-field>
+        <mat-form-field class="date">
+            <mat-label> Exp. date</mat-label>
+            <input matInput #date>
+        </mat-form-field>
+        <mat-form-field class="cvv">
+            <mat-label> CVV </mat-label>
+            <input matInput #cvv>
+        </mat-form-field>
+    </form>
 
-<button mat-raised-button color="primary" class="button" (click)="validate(cardNumber.value)">Primary</button>
+    <button mat-raised-button color="primary" class="button" (click)="validate(cardNumber.value)">Pay</button>
+</div>
 

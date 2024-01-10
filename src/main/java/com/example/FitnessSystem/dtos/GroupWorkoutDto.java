@@ -20,5 +20,4 @@ public class GroupWorkoutDto {
     private Integer hallNumber;
     private String description;
     private List<String> users;
-
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';  
+import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,36 @@ import {
   IgxIconModule,
   PickerInteractionMode
 } from "igniteui-angular";
+import { PaymentApiComponent } from '../payment-api/payment-api.component';
 
+import {
+  MatDialog,  
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
+
+
+export interface DialogData {
+  nameOnCard: string;
+  cardNumber: string;
+  expDate: string;
+  cvv: string;
+}
+
+export class DialogOverviewExampleDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'app-workout-form',
@@ -35,7 +64,11 @@ import {
     IgxIconModule,
     IgxInputGroupModule,
     IgxTimePickerModule,
-    CommonModule
+    CommonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose
 
   ],
   templateUrl: './workout-form.component.html',
@@ -51,13 +84,37 @@ export class WorkoutFormComponent {
   groupWorkout = 'Group workout'
   groupWorkoutName = 'Crossfit';
 
-
   public mode: PickerInteractionMode = PickerInteractionMode.DropDown;
   public format = 'hh:mm tt';
   public date: Date = new Date();
 
-  constructor(private readonly bookWorkoutService: BookWorkoutService) {
+  nameOnCard?: string;
+  cardNumber?: string;
+  expDate?: string;
+  cvv?: string;
+  email = sessionStorage.getItem('email')
+  constructor(private readonly bookWorkoutService: BookWorkoutService, public dialog: MatDialog) {
     this.getAllCoaches();
+  }
+
+  openDialog(date: string, time: string | Date, coach: string, workout: string, workoutName: string): void {
+    if(!date || !time || !coach || !workout || !workoutName){
+      alert("Please fill in each field!")
+      window.location.reload()
+      return
+    }
+    const dialogRef = this.dialog.open(PaymentApiComponent, {
+      height: '400px',
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed' + dialogRef.componentInstance.cardApiRes?.bin);
+      if(dialogRef.componentInstance.cardApiRes){
+        this.saveWorkout(date, time, coach, workout, workoutName)
+      }
+      
+    });
   }
 
   getAllCoaches() {
@@ -79,9 +136,10 @@ export class WorkoutFormComponent {
   }
 
   saveWorkout(date: string, time: string | Date, coach: string, workout: string, workoutName: string) {
-
     const dateTime = date.concat(" ").concat(time.toString());
     const em = sessionStorage.getItem('email');
+    const hallNumber = 4
+    const description = "CrossFit is a strength and conditioning fitness workout consisting of a mix of aerobic and bodyweight exercises"
     let foundEmail = this.findCoachEmailByUsername(coach);
     if (em) {
 
@@ -90,23 +148,22 @@ export class WorkoutFormComponent {
           if (responce) {
             alert("success")
             this.foundIndWorkout = responce;
-            window.location.reload();
+            window.location.replace('my-workouts');
           }
         })
       }
       else {
         if (time === "17:00:00") {
-          this.bookWorkoutService.saveGroupWorkout(dateTime, foundEmail, em, workoutName).subscribe(responce => {
+          this.bookWorkoutService.saveGroupWorkout(dateTime, foundEmail, em, workoutName, description, hallNumber).subscribe(responce => {
             if (responce) {
               alert("success")
               this.foundGroupWorkout = responce;
-              window.location.reload();
+              window.location.replace('my-workouts');
             }
           })
         }
         else {
           alert("Груповите тренировки са само в 17:00 часа. Моля променете избрания от Вас час!");
-          // съобщение че няма групова тренировка в този час!
         }
       }
     }

@@ -1,4 +1,5 @@
 delete from individual_workout;
+delete from group_workout_user;
 DELETE FROM group_workout;
 DELETE FROM COACH;
 DELETE FROM FITNESS_USER;

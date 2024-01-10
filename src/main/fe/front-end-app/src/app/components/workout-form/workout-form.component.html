@@ -1,5 +1,7 @@
 <div class="form">
+    @if (this.email != null && this.email != '') {
     <p class="text">*Груповите тренировки са всеки ден само от 17:00 часа!</p>
+    <p class="text">**Цената за всяка тренировка е 20лв.</p>
 
     <mat-form-field>
         <mat-label>Choose a date</mat-label>
@@ -16,7 +18,7 @@
 
     <mat-form-field>
         <mat-label>Select a workout</mat-label>
-        <mat-select placeholder="Workout*" #workoutValue> <!-- Трябва някакси да взема коя тренировка е избрана-->
+        <mat-select placeholder="Workout*" #workoutValue>
             <mat-option [value]="indWorkout">Individual workout</mat-option>
             <mat-option [value]="groupWorkout">Group workout</mat-option>
         </mat-select>
@@ -31,7 +33,7 @@
         </mat-form-field>
     </div>
 
-    <mat-form-field>
+    <mat-form-field >
         <mat-label>Select a coach</mat-label>
         <mat-select #coach>
             @for (coach of coaches; track coach) {
@@ -40,11 +42,12 @@
         </mat-select>
     </mat-form-field>
 
-    <button (click)="saveWorkout(date.value, timePicker.value, coach.value, workoutValue.value, groupWorkoutName)">
-        <!-- Трябва някакси да поставя данните в правилните формати????  -->
-        <!-- <button class="book" (click)="saveWorkout(date, timePicker, coach.value, workoutValue.value)"> -->
+    <button mat-raised-button (click)="openDialog(date.value, timePicker.value, coach.value, workoutValue.value, groupWorkoutName)">
         <span>Book</span>
         <mat-icon>arrow_forward</mat-icon>
-
     </button>
+}@else {<a style="color: red;" href="/login">Моля влезте в акаунта си, за да запазите тренировка!</a>}
 </div>
+
+
+
